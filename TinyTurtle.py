@@ -101,6 +101,36 @@ def valLength(string):
             break
     return count
 
+def processArg(cmd, string):
+
+    value = getValue(string[0:])
+
+    if cmd == "F":
+        print("Forward(", str(value), ")", sep="")
+        cmdF(value)
+        cmdLength = valLength(string)
+
+    elif cmd == "B":
+        print("Back(", str(value), ")", sep="")
+        cmdB(value)
+        cmdLength = valLength(string)
+
+    elif cmd == "L":
+        print("Left(", str(value), ")", sep="")
+        cmdL(value)
+        cmdLength = valLength(string)
+
+    elif cmd == "R":
+        print("Right(", str(value), ")", sep="")
+        cmdR(value)
+        cmdLength = valLength(string)
+
+    elif cmd == "C":
+        print("Circle(", str(value), ")", sep="")
+        cmdC(value)
+        cmdLength = valLength(string)
+
+    return cmdLength
 
 def tinyTurtle(cmd):
     idx = 0
@@ -109,17 +139,50 @@ def tinyTurtle(cmd):
 
     while cmd != "":
         if cmd[0] == "F":
-            ivalue = getValue(cmd[1:])
-            print("Forward(", str(ivalue), ")", sep="")
-            cmdF(int(ivalue))
-            cmdLength = valLength(cmd[1:])
+            cmdLength = processArg("F", cmd[1:])
             if cmdLength < length + 1:
                 cmd = cmd[cmdLength + 2:]
             else:
                 break
-        
 
-tinyTurtle("F100 F100")
+        elif cmd[0] == "B":
+            cmdLength = processArg("B", cmd[1:])
+            if cmdLength < length + 1:
+                cmd = cmd[cmdLength + 2:]
+            else:
+                break
+
+        elif cmd[0] == "L":
+            cmdLength = processArg("L", cmd[1:])
+            if cmdLength < length + 1:
+                cmd = cmd[cmdLength + 2:]
+            else:
+                break
+
+        elif cmd[0] == "R":
+            cmdLength = processArg("R", cmd[1:])
+            if cmdLength < length + 1:
+                cmd = cmd[cmdLength + 2:]
+            else:
+                break
+
+        elif cmd[0] == "C":
+            cmdLength = processArg("C", cmd[1:])
+            if cmdLength < length + 1:
+                cmd = cmd[cmdLength + 2:]
+            else:
+                break
+
+        elif cmd[0] == "U":
+            print("Up()")
+            cmdU()
+            if
+
+
+
+
+
+tinyTurtle("F100 C100 L200 B200 R90 C100")
 
 
 #idx = 1
