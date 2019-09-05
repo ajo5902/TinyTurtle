@@ -72,3 +72,20 @@ def cmdD():
 
     tt.down()
 
+def tinyTurtle(cmd):
+    idx = 0
+    value = ""
+    length = len(cmd) - 1
+    if cmd[0] == "F":
+        idx = 1
+        while cmd[idx] != " ":
+            value += cmd[idx]
+            idx += 1
+            if idx > length:
+                break
+        print("Forward (", value, ")", sep="")
+        cmdF(int(value))
+
+
+tinyTurtle("F100")
+
