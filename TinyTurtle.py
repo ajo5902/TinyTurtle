@@ -128,6 +128,8 @@ def processArg(cmd, string):
 
     elif cmd == "P":
         cmdLength = valLength(string) + 1
+        if string[cmdLength] == "0":
+            cmdLength += 1
         secCom = getValue(string[cmdLength:])
         cmdLength = cmdLength + valLength(str(secCom))
         cmdP(value, secCom)
@@ -211,11 +213,15 @@ def cmdI(amount, command):
                 else:
                     pass
 
+            elif command[0] == "I":
+                cmdLength = processArg("I", command[1:])
+                if cmdLength < len(command) + 1:
+                    command = command[cmdLength + 2:]
+                else:
+                    pass
 
         loops -= 1
         command = commandcpy
-
-
 
 def tinyTurtle(cmd):
     idx = 0
@@ -296,7 +302,7 @@ def tinyTurtle(cmd):
 
 # = "cool beans"
 
-tinyTurtle("")
+tinyTurtle("I2 I4 F100 L090 @ F100 @")
 
 
 #idx = 1
