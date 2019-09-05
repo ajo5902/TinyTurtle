@@ -72,20 +72,59 @@ def cmdD():
 
     tt.down()
 
-def tinyTurtle(cmd):
+def getValue(string):
+    """
+    getValue takes a string of numbers and outputs it as an integer.
+
+    :param string: a string composed of numbers.
+    :return: an integer.
+    """
+    length = len(string) - 1
     idx = 0
     value = ""
+    while string[idx] != " ":
+        value += string[idx]
+        idx += 1
+        if idx > length:
+            break
+    return int(value)
+
+def valLength(string):
+    count = 0
+    idx = 0
+    while string[idx] != " ":
+        count += 1
+        idx += 1
+        if idx < len(string):
+            continue
+        else:
+            break
+    return count
+
+
+def tinyTurtle(cmd):
+    idx = 0
     length = len(cmd) - 1
-    if cmd[0] == "F":
-        idx = 1
-        while cmd[idx] != " ":
-            value += cmd[idx]
-            idx += 1
-            if idx > length:
+    ivalue = 0
+
+    while cmd != "":
+        if cmd[0] == "F":
+            ivalue = getValue(cmd[1:])
+            print("Forward(", str(ivalue), ")", sep="")
+            cmdF(int(ivalue))
+            cmdLength = valLength(cmd[1:])
+            if cmdLength < length + 1:
+                cmd = cmd[cmdLength + 2:]
+            else:
                 break
-        print("Forward (", value, ")", sep="")
-        cmdF(int(value))
+        
+
+tinyTurtle("F100 F100")
 
 
-tinyTurtle("F100")
-
+#idx = 1
+#while cmd[idx] != " ":
+#value += cmd[idx]
+#idx += 1
+#if idx > length:
+#break
