@@ -91,6 +91,12 @@ def getValue(string):
     return int(value)
 
 def valLength(string):
+    """
+    valLength returns the length of a value of a turtle
+    command.
+    :param string: string of values
+    :return: int
+    """
     count = 0
     idx = 0
     while string[idx] != " ":
@@ -103,6 +109,13 @@ def valLength(string):
     return count
 
 def processArg(cmd, string):
+    """
+    processArg takes the TT command and arguement, processes it,
+    and returns the length of the value of the command.
+    :param cmd: a string containing a TT command. (F, L, R, C, U, D, ETC)
+    :param string: a string of numerical values.
+    :return: int
+    """
 
     value = getValue(string[0:])
 
@@ -143,6 +156,13 @@ def processArg(cmd, string):
     return cmdLength
 
 def cmdP(sides, length):
+    """
+    cmdP draws a polygon of * sides and * side length
+
+    :param sides: integer representing the number of sides to be drawn.
+    :param length: integer representing the legnth of the sides.
+    :return:
+    """
     angle = 360 / sides
     while sides != 0:
         cmdF(length)
@@ -150,6 +170,13 @@ def cmdP(sides, length):
         sides -= 1
 
 def cmdI(amount, command):
+    """
+
+    :param amount: integer representing the amount of iterations to complete.
+    :param command: a string representing the commands to be iterated through.
+    :return:
+    """
+
     loops = amount
     commandcpy = command[:]
 
@@ -223,9 +250,15 @@ def cmdI(amount, command):
         loops -= 1
         command = commandcpy
 
-
 def commandExpander(cmd):
-    commandSnip = ""
+    """
+    commandExpander expands the string of TT commands provided by
+    the user, and outputs those commands.
+
+    :param cmd: string of TT commands to be expanded.
+    :return:
+    """
+
     while cmd != "":
         if cmd[0] == "F":
             nextcmd = valLength(cmd[1:]) + 2
@@ -317,8 +350,15 @@ def commandExpander(cmd):
                 sides -= 1
             cmd = cmd[nextcmd:]
 
-
 def tinyTurtle(cmd):
+    """
+    tinyTurtle breaks down a string of TT commands and process it
+    using the processArg func.
+
+    :param cmd:
+    :return:
+    """
+
     idx = 0
     length = len(cmd) - 1
     ivalue = 0
@@ -389,25 +429,23 @@ def tinyTurtle(cmd):
             else:
                 break
 
+def main():
+    """
+    main prompts the user for a string of turtle commands, expands them
+    to standard output, and then interpretes them through the tinyTurtle
+    function.
+    :return:
+    """
+    ttcmd = input("Enter Tiny Turtle program (CMD+D or CTRL+D to terminate):")
+    print("\n")
+    if ttcmd != "^D":
+        commandExpander(ttcmd)
+    else:
+        pass
+    print("\n")
+    print("Evaluating...")
+    print("\n")
+    tinyTurtle(ttcmd)
+    tt.done()
 
-#commandExpander("P4 050")
-
-
-commandExpander("P3 100 U F200 D P4 050 U F100 D P8 025 U B500 D I2 C050 L180 @")
-
-#processArg("I", "2 F100 C10 F100 U D P3 100 @")
-
-
-#cmdI('2', 'F100 C10 F100 U D P3 100 @')
-
-# = "cool beans"
-
-#tinyTurtle("I2 I4 F100 L090 @ F100 @")
-
-
-#idx = 1
-#while cmd[idx] != " ":
-#value += cmd[idx]
-#idx += 1
-#if idx > length:
-#break
+main()
