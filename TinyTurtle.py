@@ -22,5 +22,53 @@ def cmdB(value):
     :param value: the distance the turtle marker moves backward
     :return:
     """
+
     tt.back(value)
-    
+
+def cmdL(value):
+    """
+    cmdL turns the turtle left a certain number of degrees.
+    :param value: the amount of degrees the turtle will turn to
+                 the left.
+    :return:
+    """
+
+    tt.left(value)
+
+def cmdR(value):
+    """
+    cmdR turns the turtle marker right a certain number of degrees.
+    :param value: the amount the turtle turns to the right.
+    :return:
+    """
+
+    tt.right(value)
+
+def cmdC(value):
+    """
+    cmdC draws a circle of a certain radius.
+
+    :param value: radius of the circle to be drawn
+    :return:
+    """
+
+    tt.circle(value)
+
+def cmdU():
+    """
+    cmdU raises the turtle marker up from the canvas.
+
+    :return:
+    """
+
+    tt.up()
+
+def cmdD():
+    """
+    cmdD raises the turtle marker up from the canvas.
+
+    :return:
+    """
+
+    tt.down()
+
