@@ -4,7 +4,7 @@ This program takes in commands and executes them using
 python's `turtle` module. 
 
 
-##Basic TT Commands
+## Basic TT Commands
 
 TT Command | Argument | Turtle Command
 -----------|----------|---------------| 
@@ -16,14 +16,14 @@ C          |###       | circle(###)  |
 U          |None       | up()  |
 D          |None       | down()  |
 
-##Enhanced TT Commands
+## Enhanced TT Commands
 
 TT Command | Argument | Turtle Command
 -----------|----------|---------------| 
 I          |#...@     | Iterate ...# times  |
 P          |# ###     | Draw polygon of # sides % ### side length |
 
-###Program Execution
+### Program Execution
 
 The program execution is as follows:
 
