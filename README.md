@@ -17,12 +17,14 @@ U          |None       | up()  |
 D          |None       | down()  |
 
 ##Enhanced TT Commands
+
 TT Command | Argument | Turtle Command
 -----------|----------|---------------| 
-I          |#...@       | Iterate ...# times  |
-P          |# ###       | Draw polygon of # sides % ### side length |
+I          |#...@     | Iterate ...# times  |
+P          |# ###     | Draw polygon of # sides % ### side length |
 
 ###Program Execution
+
 The program execution is as follows:
 
 1. First it prompts for a string containing any combination of basic and enhanced TT commands, as a single string.
