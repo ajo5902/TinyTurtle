@@ -176,13 +176,29 @@ def tinyTurtle(cmd):
         elif cmd[0] == "U":
             print("Up()")
             cmdU()
-            if
+            if len(cmd) == 1:
+                break
+            else:
+                cmd = cmd[2:]
+
+        elif cmd[0] == "D":
+            print("Down()")
+            cmdD()
+            if len(cmd) == 1:
+                break
+            else:
+                cmd = cmd[2:]
+
+        else:
+            pass
 
 
 
 
 
-tinyTurtle("F100 C100 L200 B200 R90 C100")
+
+
+tinyTurtle("F100 U C100 D U D L200 U B200 D R90 C100")
 
 
 #idx = 1
