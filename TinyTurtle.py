@@ -132,6 +132,12 @@ def processArg(cmd, string):
         cmdLength = cmdLength + valLength(str(secCom))
         cmdP(value, secCom)
 
+    elif cmd == "I":
+        cmdLength = valLength(string) + 1
+        secCom = string[cmdLength: ]
+        cmdLength = cmdLength + len(secCom)
+        cmdI(value, secCom)
+
     return cmdLength
 
 def cmdP(sides, length):
@@ -140,6 +146,76 @@ def cmdP(sides, length):
         cmdF(length)
         cmdL(angle)
         sides -= 1
+
+def cmdI(amount, command):
+    loops = amount
+    commandcpy = command[:]
+
+    while loops != 0:
+        while command != "" and command[0] != "@":
+            if command[0] == "F":
+                cmdLength = processArg("F", command[1:])
+                if cmdLength < len(command) + 1:
+                    command = command[cmdLength + 2:]
+                else:
+                    pass
+
+            elif command[0] == "B":
+                cmdLength = processArg("B", command[1:])
+                if cmdLength < len(command) + 1:
+                    command = command[cmdLength + 2:]
+                else:
+                    pass
+
+            elif command[0] == "L":
+                cmdLength = processArg("L", command[1:])
+                if cmdLength < len(command) + 1:
+                    command = command[cmdLength + 2:]
+                else:
+                    pass
+
+            elif command[0] == "R":
+                cmdLength = processArg("R", command[1:])
+                if cmdLength < len(command) + 1:
+                    command = command[cmdLength + 2:]
+                else:
+                    pass
+
+            elif command[0] == "C":
+                cmdLength = processArg("C", command[1:])
+                if cmdLength < len(command) + 1:
+                    command = command[cmdLength + 2:]
+                else:
+                    pass
+
+            elif command[0] == "U":
+                print("Up()")
+                cmdU()
+                if len(command) == 1:
+                    break
+                else:
+                    command = command[2:]
+
+            elif command[0] == "D":
+                print("Down()")
+                cmdD()
+                if len(command) == 1:
+                    break
+                else:
+                    command = command[2:]
+
+            elif command[0] == "P":
+                cmdLength = processArg("P", command[1:])
+                if cmdLength < len(command) + 1:
+                    command = command[cmdLength + 2:]
+                else:
+                    pass
+
+
+        loops -= 1
+        command = commandcpy
+
+
 
 def tinyTurtle(cmd):
     idx = 0
@@ -205,13 +281,22 @@ def tinyTurtle(cmd):
             else:
                 break
 
+        elif cmd[0] == "I":
+            cmdLength = processArg("I", cmd[1:])
+            if cmdLength < length + 1:
+                cmd = cmd[cmdLength + 2:]
+            else:
+                break
 
 
+#processArg("I", "2 F100 C10 F100 U D P3 100 @")
 
 
+#cmdI('2', 'F100 C10 F100 U D P3 100 @')
 
+# = "cool beans"
 
-tinyTurtle("F100 P4 100 U F200 D P3 100 ")
+tinyTurtle("")
 
 
 #idx = 1
