@@ -13,6 +13,7 @@ def cmdF(value):
     :param value: How far you want the turtle to move.
     :return:
     """
+    print("Forward(", str(value), ")", sep="")
     tt.fd(value)
 
 def cmdB(value):
@@ -22,7 +23,7 @@ def cmdB(value):
     :param value: the distance the turtle marker moves backward
     :return:
     """
-
+    print("Back(", str(value), ")", sep="")
     tt.back(value)
 
 def cmdL(value):
@@ -32,7 +33,7 @@ def cmdL(value):
                  the left.
     :return:
     """
-
+    print("Left(", str(value), ")", sep="")
     tt.left(value)
 
 def cmdR(value):
@@ -41,7 +42,7 @@ def cmdR(value):
     :param value: the amount the turtle turns to the right.
     :return:
     """
-
+    print("Right(", str(value), ")", sep="")
     tt.right(value)
 
 def cmdC(value):
@@ -51,7 +52,7 @@ def cmdC(value):
     :param value: radius of the circle to be drawn
     :return:
     """
-
+    print("Circle(", str(value), ")", sep="")
     tt.circle(value)
 
 def cmdU():
@@ -106,31 +107,39 @@ def processArg(cmd, string):
     value = getValue(string[0:])
 
     if cmd == "F":
-        print("Forward(", str(value), ")", sep="")
         cmdF(value)
         cmdLength = valLength(string)
 
     elif cmd == "B":
-        print("Back(", str(value), ")", sep="")
         cmdB(value)
         cmdLength = valLength(string)
 
     elif cmd == "L":
-        print("Left(", str(value), ")", sep="")
         cmdL(value)
         cmdLength = valLength(string)
 
     elif cmd == "R":
-        print("Right(", str(value), ")", sep="")
         cmdR(value)
         cmdLength = valLength(string)
 
     elif cmd == "C":
-        print("Circle(", str(value), ")", sep="")
         cmdC(value)
         cmdLength = valLength(string)
 
+    elif cmd == "P":
+        cmdLength = valLength(string) + 1
+        secCom = getValue(string[cmdLength:])
+        cmdLength = cmdLength + valLength(str(secCom))
+        cmdP(value, secCom)
+
     return cmdLength
+
+def cmdP(sides, length):
+    angle = 360 / sides
+    while sides != 0:
+        cmdF(length)
+        cmdL(angle)
+        sides -= 1
 
 def tinyTurtle(cmd):
     idx = 0
@@ -189,8 +198,12 @@ def tinyTurtle(cmd):
             else:
                 cmd = cmd[2:]
 
-        else:
-            pass
+        elif cmd[0] == "P":
+            cmdLength = processArg("P", cmd[1:])
+            if cmdLength < length + 1:
+                cmd = cmd[cmdLength + 2:]
+            else:
+                break
 
 
 
@@ -198,7 +211,7 @@ def tinyTurtle(cmd):
 
 
 
-tinyTurtle("F100 U C100 D U D L200 U B200 D R90 C100")
+tinyTurtle("F100 P4 100 U F200 D P3 100 ")
 
 
 #idx = 1
